@@ -105,89 +105,438 @@ class _MyHomePageState extends State<MyHomePage> {
   _listBill(){
     return Positioned(
         top: 320,
-        child: Container(
-      height: 130,
-      width: MediaQuery.of(context).size.width-20,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(30),
-          bottomRight: Radius.circular(30)
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Color(0xFFd8dbe0),
-            offset: Offset(1, 1),
-            blurRadius:  20.0,
-            spreadRadius: 10
-          )
-        ]
-      ),
-         child: Container(
-            margin:  const EdgeInsets.only(top: 10, left: 18),
-              child: Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            height: 60,
-                            width: 60,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(9.0),
-                              border: Border.all(
-                                width: 3,
-                                color: Colors.blueGrey,
-                              ),
-                              image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: AssetImage(
-                                  "images/brand1.png"
-                                )
-                              )
-                            ),
 
-                          ),
-                          SizedBox(width: 10, ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
+        child: Column(
+          children: [
+            Container(
+              height: 130,
+              width: MediaQuery.of(context).size.width-20,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(30),
+                      bottomRight: Radius.circular(30)
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Color(0xFFd8dbe0),
+                        offset: Offset(1, 1),
+                        blurRadius:  20.0,
+                        spreadRadius: 10
+                    )
+                  ]
+              ),
+              child: Container(
+                margin:  const EdgeInsets.only(top: 10, left: 18),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              height: 60,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(9.0),
+                                  border: Border.all(
+                                    width: 3,
+                                    color: Colors.blueGrey,
+                                  ),
+                                  image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: AssetImage(
+                                          "images/brand1.png"
+                                      )
+                                  )
+                              ),
+
+                            ),
+                            SizedBox(width: 10, ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "KenGen Power",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: AppColor.mainColor,
+                                    fontWeight: FontWeight.w700,
+
+                                  ),
+                                ),
+                                SizedBox(height: 10,),
+                                Text(
+                                  "ID: 55533222",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: AppColor.idColor,
+                                    fontWeight: FontWeight.w700,
+
+                                  ),
+                                ),
+                              ],
+
+                            )
+                          ],
+                        ),
+                        SizedBox(height: 20,),
+                        SizedText(text:"Auto blablabla 2010", color: AppColor.green,),
+
+                      ],
+
+                    ),
+                    Row(
+
+                      children: [
+                        //SizedBox(width: 60,),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 80, height: 30,decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                                color: AppColor.selectBackground
+                            ),
+                              child: Center(
+                                child: Text(
+                                  "Select",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color: AppColor.selectColor
+                                  ),
+                                ),),
+                            ),
+                            SizedBox(height: 30,),
                             Text(
-                              "KenGen Power",
+                              "\$1543.00",
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 18,
                                 color: AppColor.mainColor,
-                                fontWeight: FontWeight.w700,
+                                fontWeight: FontWeight.w900,
 
                               ),
                             ),
-                            SizedBox(height: 10,),
+                            SizedBox(height: 5,),
                             Text(
-                              "ID: 55533222",
+                              "Due in 3 days",
                               style: TextStyle(
                                 fontSize: 14,
-                                color: AppColor.idColor,
-                                fontWeight: FontWeight.w700,
-
+                                color: AppColor.selectColor,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ],
-
-                          )
-                        ],
-                      ),
-                      SizedBox(height: 20,),
-                      SizedText(text:"Auto blablabla 2010", color: AppColor.green,),
-
-                    ],
-
-                  )
-                ],
+                        ),
+                        SizedBox(width: 20,),
+                        Container(
+                          width: 5,
+                          height: 35,
+                          decoration: BoxDecoration(
+                              color: AppColor.halfOval,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(30),
+                                  bottomLeft: Radius.circular(30)
+                              )
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
-        ),
 
-    ));
+            ),
+            SizedBox(height: 8,),
+            Container(
+              height: 130,
+              width: MediaQuery.of(context).size.width-20,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(30),
+                      bottomRight: Radius.circular(30)
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Color(0xFFd8dbe0),
+                        offset: Offset(1, 1),
+                        blurRadius:  20.0,
+                        spreadRadius: 10
+                    )
+                  ]
+              ),
+              child: Container(
+                margin:  const EdgeInsets.only(top: 10, left: 18),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              height: 60,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(9.0),
+                                  border: Border.all(
+                                    width: 3,
+                                    color: Colors.blueGrey,
+                                  ),
+                                  image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: AssetImage(
+                                          "images/brand1.png"
+                                      )
+                                  )
+                              ),
+
+                            ),
+                            SizedBox(width: 10, ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "KenGen Power",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: AppColor.mainColor,
+                                    fontWeight: FontWeight.w700,
+
+                                  ),
+                                ),
+                                SizedBox(height: 10,),
+                                Text(
+                                  "ID: 55533222",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: AppColor.idColor,
+                                    fontWeight: FontWeight.w700,
+
+                                  ),
+                                ),
+                              ],
+
+                            )
+                          ],
+                        ),
+                        SizedBox(height: 20,),
+                        SizedText(text:"Auto blablabla 2010", color: AppColor.green,),
+
+                      ],
+
+                    ),
+                    Row(
+
+                      children: [
+                        //SizedBox(width: 60,),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 80, height: 30,decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                                color: AppColor.selectBackground
+                            ),
+                              child: Center(
+                                child: Text(
+                                  "Select",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color: AppColor.selectColor
+                                  ),
+                                ),),
+                            ),
+                            SizedBox(height: 30,),
+                            Text(
+                              "\$1543.00",
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: AppColor.mainColor,
+                                fontWeight: FontWeight.w900,
+
+                              ),
+                            ),
+                            SizedBox(height: 5,),
+                            Text(
+                              "Due in 3 days",
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: AppColor.selectColor,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(width: 20,),
+                        Container(
+                          width: 5,
+                          height: 35,
+                          decoration: BoxDecoration(
+                              color: AppColor.halfOval,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(30),
+                                  bottomLeft: Radius.circular(30)
+                              )
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+
+            ),
+            SizedBox(height: 8,),
+            Container(
+              height: 130,
+              width: MediaQuery.of(context).size.width-20,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(30),
+                      bottomRight: Radius.circular(30)
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Color(0xFFd8dbe0),
+                        offset: Offset(1, 1),
+                        blurRadius:  20.0,
+                        spreadRadius: 10
+                    )
+                  ]
+              ),
+              child: Container(
+                margin:  const EdgeInsets.only(top: 10, left: 18),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              height: 60,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(9.0),
+                                  border: Border.all(
+                                    width: 3,
+                                    color: Colors.blueGrey,
+                                  ),
+                                  image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: AssetImage(
+                                          "images/brand1.png"
+                                      )
+                                  )
+                              ),
+
+                            ),
+                            SizedBox(width: 10, ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "KenGen Power",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: AppColor.mainColor,
+                                    fontWeight: FontWeight.w700,
+
+                                  ),
+                                ),
+                                SizedBox(height: 10,),
+                                Text(
+                                  "ID: 55533222",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: AppColor.idColor,
+                                    fontWeight: FontWeight.w700,
+
+                                  ),
+                                ),
+                              ],
+
+                            )
+                          ],
+                        ),
+                        SizedBox(height: 20,),
+                        SizedText(text:"Auto blablabla 2010", color: AppColor.green,),
+
+                      ],
+
+                    ),
+                    Row(
+
+                      children: [
+                        //SizedBox(width: 60,),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 80, height: 30,decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                                color: AppColor.selectBackground
+                            ),
+                              child: Center(
+                                child: Text(
+                                  "Select",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color: AppColor.selectColor
+                                  ),
+                                ),),
+                            ),
+                            SizedBox(height: 30,),
+                            Text(
+                              "\$1543.00",
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: AppColor.mainColor,
+                                fontWeight: FontWeight.w900,
+
+                              ),
+                            ),
+                            SizedBox(height: 5,),
+                            Text(
+                              "Due in 3 days",
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: AppColor.selectColor,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(width: 20,),
+                        Container(
+                          width: 5,
+                          height: 35,
+                          decoration: BoxDecoration(
+                              color: AppColor.halfOval,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(30),
+                                  bottomLeft: Radius.circular(30)
+                              )
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+
+            )
+          ],
+        )
+
+
+    );
   }
 }
