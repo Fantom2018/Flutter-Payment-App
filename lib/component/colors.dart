@@ -9,4 +9,6 @@ class AppColor{
   static Color selectColor = Color(0xFF6f7c8b);
   static Color halfOval = Color(0xFF646f80);
   static Color cancelColor = Color(0xFF3c4b60);
+  static Color wlColor = Color(0xFFf1f4f8);
+
 }

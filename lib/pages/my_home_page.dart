@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_payment_app/component/colors.dart';
+import 'package:flutter_payment_app/widgets/buttons.dart';
 import 'package:flutter_payment_app/widgets/large_buttons.dart';
 import 'package:flutter_payment_app/widgets/test_size.dart';
 
@@ -25,6 +26,8 @@ class _MyHomePageState extends State<MyHomePage> {
             _headSection(),
             _listBill(),
             _payButton(),
+
+
           ],
         ),
       ),
@@ -39,6 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
           _mainBackground(),
           _curveImageContainer(),
           _buttonContainer(),
+          _textContainer(),
         ],
       ),
     );
@@ -47,24 +51,88 @@ class _MyHomePageState extends State<MyHomePage> {
     return Positioned(
         bottom: 15,
         right: 58,
-        child: Container(
-          height: 50,
-          width: 50,
+        child: GestureDetector(
+          onTap: (){
+            showModalBottomSheet<dynamic>(
+              isScrollControlled: true,
+              barrierColor: Colors.transparent,
+              backgroundColor: Colors.transparent,
+                context: context, builder: (BuildContext bc){
+              return Container(
+                height: MediaQuery.of(context).size.height-220,
+                child: Stack(
+                  children: [
+                    Positioned(
+                        bottom: 0,
+                        child: Container(
+                      color: AppColor.idColor.withOpacity(0.7),
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height-300,
+                    )),
+                    Positioned(
+                      top: 0,
+                        right: 50,
+                        child: Container(
+                          padding: const EdgeInsets.only(top: 8, bottom: 15),
+                      width: 60,
+                      height: 250,
+                      decoration: BoxDecoration(
+                        color: AppColor.mainColor,
+                        borderRadius: BorderRadius.circular(30)
+                      ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              AppButtons(
+                                icon:Icons.cancel,
+                              iconColor: AppColor.mainColor,
+                              textColor: Colors.white,
+                              backgroundColor: Colors.white,
+                              onTop: (){Navigator.pop(context);},),
+                              AppButtons(
+
+                                icon:Icons.add,
+                              iconColor: AppColor.mainColor,
+                              textColor: Colors.white,
+                              backgroundColor: Colors.white,
+                              onTop: (){},
+                                text: "Add Bill",
+                              ),
+                              AppButtons(
+                                icon:Icons.history,
+                              iconColor: AppColor.mainColor,
+                              textColor: Colors.white,
+                              backgroundColor: Colors.white,
+                              onTop: (){},
+                                text: "History",
+                              ),
+                            ],
+                          ),
+                    ))
+                  ],
+                ),
+              );
+            });
+            },
+          child: Container(
+            height: 50,
+            width: 50,
       decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(
-            "images/lines.png"
-          )
-        ),
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 15,
-            offset:  Offset(0, 1),
-            color: Color(0xFF11324d).withOpacity(0.2)
-          )
-        ]
+          image: DecorationImage(
+            image: AssetImage(
+              "images/lines.png"
+            )
+          ),
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 15,
+              offset:  Offset(0, 1),
+              color: Color(0xFF11324d).withOpacity(0.2)
+            )
+          ]
       ),
-    )
+    ),
+        )
     );
   }
   _mainBackground(){
@@ -114,7 +182,7 @@ class _MyHomePageState extends State<MyHomePage> {
           removeTop: true,
           context: context,
           child: ListView.builder(
-            itemCount: 3,
+            itemCount: 6,
             itemBuilder: (_, index){
              return Container(
                margin: const EdgeInsets.only(top: 20, right: 18),
@@ -270,5 +338,33 @@ class _MyHomePageState extends State<MyHomePage> {
     return Positioned(
       bottom: 20,
       child: AppLargeButton( text: 'Pay all bills', textColor: Colors.white,));
+  }
+  _textContainer(){
+    return Stack(
+      children: [
+        Positioned(
+            left: 0,
+            top: 100,
+            child: Text(
+              "My Bills",
+              style: TextStyle(
+                  fontSize: 70,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF3c4b60)
+              ),
+            )),
+        Positioned(
+            left: 40,
+            top: 80,
+            child: Text(
+              "My Bills",
+              style: TextStyle(
+                  fontSize: 50,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white
+              ),
+            )),
+      ],
+    );
   }
 }
