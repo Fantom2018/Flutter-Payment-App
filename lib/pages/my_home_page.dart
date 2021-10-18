@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_payment_app/component/colors.dart';
+import 'package:flutter_payment_app/widgets/test_size.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -21,6 +22,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Stack(
           children: [
             _headSection(),
+            _listBill(),
+
           ],
         ),
       ),
@@ -98,5 +101,93 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
         )
     );
+  }
+  _listBill(){
+    return Positioned(
+        top: 320,
+        child: Container(
+      height: 130,
+      width: MediaQuery.of(context).size.width-20,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(30),
+          bottomRight: Radius.circular(30)
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Color(0xFFd8dbe0),
+            offset: Offset(1, 1),
+            blurRadius:  20.0,
+            spreadRadius: 10
+          )
+        ]
+      ),
+         child: Container(
+            margin:  const EdgeInsets.only(top: 10, left: 18),
+              child: Row(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            height: 60,
+                            width: 60,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(9.0),
+                              border: Border.all(
+                                width: 3,
+                                color: Colors.blueGrey,
+                              ),
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage(
+                                  "images/brand1.png"
+                                )
+                              )
+                            ),
+
+                          ),
+                          SizedBox(width: 10, ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                            Text(
+                              "KenGen Power",
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: AppColor.mainColor,
+                                fontWeight: FontWeight.w700,
+
+                              ),
+                            ),
+                            SizedBox(height: 10,),
+                            Text(
+                              "ID: 55533222",
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: AppColor.idColor,
+                                fontWeight: FontWeight.w700,
+
+                              ),
+                            ),
+                          ],
+
+                          )
+                        ],
+                      ),
+                      SizedBox(height: 20,),
+                      SizedText(text:"Auto blablabla 2010", color: AppColor.green,),
+
+                    ],
+
+                  )
+                ],
+              ),
+        ),
+
+    ));
   }
 }
