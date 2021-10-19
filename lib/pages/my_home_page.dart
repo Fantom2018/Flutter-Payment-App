@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_payment_app/component/colors.dart';
+import 'package:flutter_payment_app/pages/paiment_page.dart';
 import 'package:flutter_payment_app/widgets/buttons.dart';
 import 'package:flutter_payment_app/widgets/large_buttons.dart';
 import 'package:flutter_payment_app/widgets/test_size.dart';
+import 'package:get/get.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -88,14 +90,14 @@ class _MyHomePageState extends State<MyHomePage> {
                               iconColor: AppColor.mainColor,
                               textColor: Colors.white,
                               backgroundColor: Colors.white,
-                              onTop: (){Navigator.pop(context);},),
+                              onTap: (){Navigator.pop(context);},),
                               AppButtons(
 
                                 icon:Icons.add,
                               iconColor: AppColor.mainColor,
                               textColor: Colors.white,
                               backgroundColor: Colors.white,
-                              onTop: (){},
+                              onTap: (){},
                                 text: "Add Bill",
                               ),
                               AppButtons(
@@ -103,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               iconColor: AppColor.mainColor,
                               textColor: Colors.white,
                               backgroundColor: Colors.white,
-                              onTop: (){},
+                              onTap: (){},
                                 text: "History",
                               ),
                             ],
@@ -337,7 +339,9 @@ class _MyHomePageState extends State<MyHomePage> {
   _payButton(){
     return Positioned(
       bottom: 20,
-      child: AppLargeButton( text: 'Pay all bills', textColor: Colors.white,));
+      child: AppLargeButton( text: 'Pay all bills', textColor: Colors.white, onTap: (){Get.to(()=> PaymentPage());},
+      )
+    );
   }
   _textContainer(){
     return Stack(

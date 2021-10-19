@@ -5,7 +5,7 @@ import 'package:flutter_payment_app/component/colors.dart';
 class AppButtons extends StatelessWidget {
   final double? fontSize;
   final IconData icon;
-  final Function()? onTop;
+  final Function()? onTap;
   final Color? iconColor;
   final Color? backgroundColor;
   final Color? textColor;
@@ -15,16 +15,16 @@ class AppButtons extends StatelessWidget {
     this.fontSize = 20,
     required this.icon,
     this.text,
-    this.onTop,
-    this.iconColor = AppColor.mainColor,
-    this.backgroundColor = Colors.white,
+    this.onTap,
+    this.iconColor = Colors.white,
+    this.backgroundColor = AppColor.mainColor,
     this.textColor = AppColor.mainColor
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTop,
+      onTap: onTap,
       child: Column(
         children: [
           Container(
