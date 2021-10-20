@@ -31,8 +31,7 @@
 .pub-cache/
 .pub/
 /build/
-json/
-seviices/
+
 
 # Web related
 lib/generated_plugin_registrant.dart
@@ -47,3 +46,5 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+/json/
+/lib/seviices/
