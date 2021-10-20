@@ -9,9 +9,6 @@ class DataServices{
     jsonDecode(await info);
     var list = json.decode(await info);
     return list;
-
-    56959856969856986
-    55695985696985698655695
-    98569698569865
+7680946876098
   }
 }
