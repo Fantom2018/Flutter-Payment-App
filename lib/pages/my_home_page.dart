@@ -184,7 +184,7 @@ class _MyHomePageState extends State<MyHomePage> {
           removeTop: true,
           context: context,
           child: ListView.builder(
-            itemCount: 6,
+            itemCount: 3,
             itemBuilder: (_, index){
              return Container(
                margin: const EdgeInsets.only(top: 20, right: 18),
