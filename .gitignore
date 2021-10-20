@@ -14,8 +14,7 @@
 *.ipr
 *.iws
 .idea/
-/json/
-/seviices/
+
 
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
@@ -32,6 +31,8 @@
 .pub-cache/
 .pub/
 /build/
+json/
+seviices/
 
 # Web related
 lib/generated_plugin_registrant.dart
