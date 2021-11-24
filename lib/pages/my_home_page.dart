@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_payment_app/controllers/data_controllers.dart';
 import 'package:flutter_payment_app/component/colors.dart';
-import 'package:flutter_payment_app/pages/paiment_page.dart';
+import 'package:flutter_payment_app/pages/payment_page.dart';
 import 'package:flutter_payment_app/widgets/buttons.dart';
 import 'package:flutter_payment_app/widgets/large_buttons.dart';
 import 'package:flutter_payment_app/widgets/test_size.dart';
@@ -15,10 +16,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final DataController _controller = Get.put(DataController());
   @override
   Widget build(BuildContext context) {
+    print(_controller.list.length);
     double h = MediaQuery.of(context).size.height;
-    double w = MediaQuery.of(context).size.width;
+    //double w = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: AppColor.backGroundColor,
       body: Container(
@@ -26,7 +29,19 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Stack(
           children: [
             _headSection(),
-            _listBill(),
+            Obx((){
+              if (_controller.loading==false){
+                return Center(
+                  child: Container(
+                    width: 80,
+                      height: 80,
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              }else{
+                return _listBill();
+              }
+            }),
             _payButton(),
 
 
@@ -179,12 +194,11 @@ class _MyHomePageState extends State<MyHomePage> {
         left: 0,
         right: 0,
         bottom: 0,
-
         child: MediaQuery.removePadding(
           removeTop: true,
           context: context,
           child: ListView.builder(
-            itemCount: 3,
+            itemCount: _controller.list.length,
             itemBuilder: (_, index){
              return Container(
                margin: const EdgeInsets.only(top: 20, right: 18),
@@ -196,7 +210,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         topRight: Radius.circular(30),
                         bottomRight: Radius.circular(30)
                     ),
-                    boxShadow: [
+                boxShadow: [
                       BoxShadow(
                           color: Color(0xFFd8d5e0),
                           offset: Offset(1, 1),
@@ -227,71 +241,72 @@ class _MyHomePageState extends State<MyHomePage> {
                                     image: DecorationImage(
                                         fit: BoxFit.cover,
                                         image: AssetImage(
-                                            "images/brand1.png"
+                                            _controller.list[index]["logo_img"]
                                         )
                                     )
                                 ),
-
                               ),
                               SizedBox(width: 10, ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "KenGen Power",
+                                    _controller.list[index]["brand"],
                                     style: TextStyle(
                                       fontSize: 16,
                                       color: AppColor.mainColor,
                                       fontWeight: FontWeight.w700,
-
                                     ),
                                   ),
                                   SizedBox(height: 10,),
                                   Text(
-                                    "ID: 55533222",
+                                    "ID: 55533222", /*//cvjn*/
                                     style: TextStyle(
                                       fontSize: 14,
                                       color: AppColor.idColor,
                                       fontWeight: FontWeight.w700,
-
                                     ),
                                   ),
                                 ],
-
                               )
                             ],
                           ),
                           SizedBox(height: 10,),
-                          SizedText(text:"Auto blablabla 2010", color: AppColor.green,),
-
+                          SizedText(text:_controller.list[index]["more"],
+                            color: AppColor.green,),
                         ],
-
                       ),
                       Row(
-
                         children: [
                           //SizedBox(width: 60,),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
-                                width: 80, height: 25,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(30),
-                                  color: AppColor.selectBackground
-                              ),
-                                child: Center(
-                                  child: Text(
-                                    "Select",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        color: AppColor.selectColor
-                                    ),
-                                  ),),
+                              GestureDetector(
+                                onTap: (){
+                                  _controller.list[index]["status"]=!_controller.list[index]["status"];
+                                  print(_controller.list[index]["status"]);
+                                  _controller.list.refresh();
+                                },
+                                child: Container(
+                                  width: 80, height: 25,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30),
+                                    color: _controller.list[index]["status"]==false?AppColor.selectBackground:AppColor.green
+                                ),
+                                  child: Center(
+                                    child: Text(
+                                      "Select",
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          color: _controller.list[index]["status"]==false?AppColor.selectColor:Colors.white
+                                      ),
+                                    ),),
+                                ),
                               ),
                               SizedBox(height: 30,),
                               Text(
-                                "\$1543.00",
+                                "\$"+_controller.list[index]["due"],
                                 style: TextStyle(
                                   fontSize: 18,
                                   color: AppColor.mainColor,
