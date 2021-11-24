@@ -12,6 +12,8 @@ class DataController extends GetxController {
     super.onInit();
   }
 
+  get newList=>list.where((e)=> e["status"]).map((e) => e).toList();
+
   _loadData() async {
     _loading.value = false;
     try {
